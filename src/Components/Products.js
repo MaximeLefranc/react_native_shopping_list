@@ -1,16 +1,20 @@
 import PropTypes from "prop-types";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
-const Products = ({ name }) => {
+const Products = ({ name, deleteProduct, id }) => {
   return (
-    <View style={styles.items}>
-      <Text style={styles.element}>{name}</Text>
-    </View>
+    <Pressable onLongPress={() => deleteProduct(id)}>
+      <View style={styles.items}>
+        <Text style={styles.element}>{name}</Text>
+      </View>
+    </Pressable>
   );
 };
 
 Products.propTypes = {
   name: PropTypes.string.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
