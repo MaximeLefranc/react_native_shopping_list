@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
 	StyleSheet,
 	View,
@@ -10,15 +10,6 @@ import PropTypes from "prop-types";
 
 const AddProduct = ({ submitHandler }) => {
 	const [product, setProduct] = useState("");
-	const [btnDisable, setBtnDisable] = useState(true);
-
-	useEffect(() => {
-		if (product.length > 1) {
-			setBtnDisable(false);
-		} else {
-			setBtnDisable(true);
-		}
-	}, [product]);
 
 	const inputHandler = (value) => {
 		setProduct(value);
@@ -44,7 +35,6 @@ const AddProduct = ({ submitHandler }) => {
 				style={styles.submitButton}
 				title="valider"
 				onPress={clickHandler}
-				disabled={btnDisable}
 			>
 				<Text style={styles.submitText}>Valider</Text>
 			</TouchableOpacity>
