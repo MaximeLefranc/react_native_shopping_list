@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ModalAddProduct from './ModalAddProduct';
+import ButtonComponent from './ButtonComponent';
 
-const AddProduct = ({ submitHandler }) => {
-  const [showModal, setShowModal] = useState(false);
-
+const AddProduct = ({ submitHandler, setShowModal, showModal }) => {
   return (
     <View style={styles.Container}>
       <ModalAddProduct
@@ -13,19 +11,21 @@ const AddProduct = ({ submitHandler }) => {
         setShowModal={setShowModal}
         showModal={showModal}
       />
-      <TouchableOpacity
-        style={styles.submitButton}
-        title="newProduct"
+      <ButtonComponent
+        styleBtn={styles.submitButton}
         onPress={() => setShowModal(true)}
+        styleText={styles.submitText}
       >
-        <Text style={styles.submitText}>Nouveau produit</Text>
-      </TouchableOpacity>
+        Nouveau produit
+      </ButtonComponent>
     </View>
   );
 };
 
 AddProduct.propTypes = {
   submitHandler: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     borderWidth: 1,
-    borderColor: 'lightblue',
+    borderColor: '#C8BDBD',
     borderRadius: 10,
     overflow: 'hidden',
-    backgroundColor: 'lightblue',
+    backgroundColor: '#C8BDBD',
     justifyContent: 'center',
     alignItems: 'center',
     height: 50,

@@ -1,22 +1,20 @@
 import { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  FlatList,
-  Text,
-  StatusBar,
-  Pressable,
-} from 'react-native';
+import { StyleSheet, FlatList, StatusBar, ImageBackground } from 'react-native';
 
 // Component
 import Products from './src/Components/Products.js';
 import AddProduct from './src/Components/AddProduct.js';
 import DismissKeyboard from './src/Components/DismissKeyboard.js';
 
+// Images
+import backgroundImage from './assets/background.jpg';
+
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const submitHandler = (product) => {
+    setShowModal(false);
     if (product.length > 1) {
       const idString = Date.now().toString();
       setMyProducts((currentMyProduct) => [
@@ -36,9 +34,13 @@ export default function App() {
 
   return (
     <DismissKeyboard>
-      <View style={styles.container}>
+      <ImageBackground style={styles.container} source={backgroundImage}>
         <StatusBar barStyle="dark-content" />
-        <AddProduct submitHandler={submitHandler} />
+        <AddProduct
+          submitHandler={submitHandler}
+          setShowModal={setShowModal}
+          showModal={showModal}
+        />
         <FlatList
           data={myProducts}
           renderItem={({ item }) => (
@@ -49,7 +51,7 @@ export default function App() {
             />
           )}
         />
-      </View>
+      </ImageBackground>
     </DismissKeyboard>
   );
 }

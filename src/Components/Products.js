@@ -1,5 +1,8 @@
-import PropTypes from "prop-types";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import PropTypes from 'prop-types';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+// Components
+import ButtonComponent from './ButtonComponent';
 
 const Products = ({ name, deleteProduct, id }) => {
   return (
@@ -22,12 +25,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   element: {
-    backgroundColor: "lightpink",
+    backgroundColor: 'lightblue',
     padding: 20,
     fontSize: 17,
     marginVertical: 6,
     borderRadius: 10,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
 });
 

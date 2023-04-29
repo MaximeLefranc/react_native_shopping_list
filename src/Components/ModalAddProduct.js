@@ -1,15 +1,11 @@
-import {
-  Modal,
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Pressable,
-} from 'react-native';
+import { Modal, StyleSheet, View, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const ModalAddProduct = ({ showModal, setShowModal, submitHandler }) => {
+// Components
+import ButtonComponent from './ButtonComponent';
+
+const ModalAddProduct = ({ showModal, submitHandler, setShowModal }) => {
   const [product, setProduct] = useState('');
 
   const inputHandler = (value) => {
@@ -19,7 +15,6 @@ const ModalAddProduct = ({ showModal, setShowModal, submitHandler }) => {
   const clickHandler = () => {
     submitHandler(product.trim());
     setProduct('');
-    setShowModal(false);
   };
 
   const onSubmitEditing = () => {
@@ -28,18 +23,20 @@ const ModalAddProduct = ({ showModal, setShowModal, submitHandler }) => {
   };
 
   return (
-    <Modal
-      visible={showModal}
-      onRequestClose={() => setShowModal(false)}
-      animationType="fade"
-      transparent={true}
-    >
+    <Modal visible={showModal} animationType="fade" transparent={true}>
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <View style={styles.modalHeader}>
             <Text style={styles.modalHeaderText}>
               Ajouter un nouveau produit
             </Text>
+            <ButtonComponent
+              styleBtn={styles.pressableBtnCloseModal}
+              onPress={() => setShowModal(false)}
+              styleText={styles.modalBtnClose}
+            >
+              X
+            </ButtonComponent>
           </View>
           <View style={styles.modalBody}>
             <TextInput
@@ -53,9 +50,13 @@ const ModalAddProduct = ({ showModal, setShowModal, submitHandler }) => {
             />
           </View>
           <View style={styles.modalFooter}>
-            <Pressable style={styles.pressableBtnModal} onPress={clickHandler}>
-              <Text style={styles.modalBtn}>Valider</Text>
-            </Pressable>
+            <ButtonComponent
+              styleBtn={styles.pressableBtnModal}
+              onPress={clickHandler}
+              styleText={styles.modalBtn}
+            >
+              Valider
+            </ButtonComponent>
           </View>
         </View>
       </View>
@@ -65,8 +66,8 @@ const ModalAddProduct = ({ showModal, setShowModal, submitHandler }) => {
 
 ModalAddProduct.propType = {
   showModal: PropTypes.bool.isRequired,
-  setShowModal: PropTypes.func.isRequired,
   submitHandler: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -94,14 +95,26 @@ const styles = StyleSheet.create({
   },
   modalHeader: {
     width: '100%',
-    padding: 16,
+    padding: 5,
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: 'lightgray',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  pressableBtnCloseModal: {
+    padding: 10,
+  },
+  modalBtnClose: {
+    fontSize: 20,
+    fontWeight: '500',
   },
   modalHeaderText: {
     color: 'grey',
     fontSize: 17,
+    flexGrow: 1,
+    textAlign: 'center',
+    marginLeft: 20,
   },
   modalBody: {
     width: '100%',
