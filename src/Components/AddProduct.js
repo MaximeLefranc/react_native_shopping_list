@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   submitButton: {
     borderWidth: 1,
     borderColor: '#C8BDBD',
-    borderRadius: 10,
+    borderRadius: 30,
     overflow: 'hidden',
     backgroundColor: '#C8BDBD',
     justifyContent: 'center',

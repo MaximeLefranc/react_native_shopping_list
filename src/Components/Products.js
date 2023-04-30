@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-
-// Components
-import ButtonComponent from './ButtonComponent';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 const Products = ({ name, deleteProduct, id }) => {
+  const styleBtnClickHandler = ({ pressed }) => {
+    return {
+      ...styles.itemsBtn,
+      backgroundColor: pressed ? 'tomato' : 'lightblue',
+    };
+  };
   return (
-    <Pressable onLongPress={() => deleteProduct(id)}>
-      <View style={styles.items}>
-        <Text style={styles.element}>{name}</Text>
-      </View>
+    <Pressable
+      onLongPress={() => deleteProduct(id)}
+      style={styleBtnClickHandler}
+    >
+      <Text style={styles.element}>{name}</Text>
     </Pressable>
   );
 };
@@ -21,16 +25,16 @@ Products.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  items: {
+  itemsBtn: {
     marginTop: 5,
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginBottom: 5,
   },
   element: {
-    backgroundColor: 'lightblue',
     padding: 20,
     fontSize: 17,
     marginVertical: 6,
-    borderRadius: 10,
-    overflow: 'hidden',
   },
 });
 

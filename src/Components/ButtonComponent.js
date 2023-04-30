@@ -1,13 +1,11 @@
-import { Pressable, Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 const ButtonComponent = ({ styleBtn, onPress, styleText, children }) => {
-  console.log(typeof children);
-  console.log(styleText);
   return (
-    <Pressable style={styleBtn} onPress={onPress}>
+    <TouchableOpacity style={styleBtn} onPress={onPress}>
       <Text style={styleText}>{children}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
