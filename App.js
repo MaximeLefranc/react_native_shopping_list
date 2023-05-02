@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { StyleSheet, FlatList, StatusBar, ImageBackground } from 'react-native';
+import {
+  StyleSheet,
+  FlatList,
+  StatusBar,
+  ImageBackground,
+  View,
+} from 'react-native';
 
 // Component
 import Products from './src/Components/Products.js';
@@ -8,6 +14,7 @@ import DismissKeyboard from './src/Components/DismissKeyboard.js';
 
 // Images
 import backgroundImage from './assets/background.jpg';
+import Header from './src/Components/Header.js';
 
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
@@ -34,32 +41,36 @@ export default function App() {
 
   return (
     <DismissKeyboard>
-      <ImageBackground style={styles.container} source={backgroundImage}>
+      <ImageBackground style={styles.bgImage} source={backgroundImage}>
         <StatusBar barStyle="dark-content" />
-        <AddProduct
-          submitHandler={submitHandler}
-          setShowModal={setShowModal}
-          showModal={showModal}
-        />
-        <FlatList
-          data={myProducts}
-          renderItem={({ item }) => (
-            <Products
-              name={item.name}
-              deleteProduct={deleteProduct}
-              id={item.key}
-            />
-          )}
-        />
+        <Header />
+        <View style={styles.container}>
+          <AddProduct
+            submitHandler={submitHandler}
+            setShowModal={setShowModal}
+            showModal={showModal}
+          />
+          <FlatList
+            data={myProducts}
+            renderItem={({ item }) => (
+              <Products
+                name={item.name}
+                deleteProduct={deleteProduct}
+                id={item.key}
+              />
+            )}
+          />
+        </View>
       </ImageBackground>
     </DismissKeyboard>
   );
 }
 
 const styles = StyleSheet.create({
+  bgImage: {
+    flexGrow: 1,
+  },
   container: {
     padding: 20,
-    paddingTop: 50,
-    flexGrow: 1,
   },
 });

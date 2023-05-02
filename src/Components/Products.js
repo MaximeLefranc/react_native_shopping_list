@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
+// constants
+import colors from '../../constants/colors';
+
 const Products = ({ name, deleteProduct, id }) => {
   const styleBtnClickHandler = ({ pressed }) => {
     return {
       ...styles.itemsBtn,
-      backgroundColor: pressed ? 'tomato' : 'lightblue',
+      backgroundColor: pressed ? colors.confirmRemoveProduct : colors.product,
     };
   };
   return (
@@ -32,6 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   element: {
+    textAlign: 'center',
     padding: 20,
     fontSize: 17,
     marginVertical: 6,

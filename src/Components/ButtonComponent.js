@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ButtonComponent = ({ styleBtn, onPress, styleText, children }) => {
   return (
-    <TouchableOpacity style={styleBtn} onPress={onPress}>
+    <TouchableOpacity style={styleBtn} onPress={onPress} activeOpacity={0.5}>
       <Text style={styleText}>{children}</Text>
     </TouchableOpacity>
   );

@@ -5,6 +5,9 @@ import { useState } from 'react';
 // Components
 import ButtonComponent from './ButtonComponent';
 
+// constants
+import colors from '../../constants/colors';
+
 const ModalAddProduct = ({ showModal, submitHandler, setShowModal }) => {
   const [product, setProduct] = useState('');
 
@@ -73,12 +76,12 @@ ModalAddProduct.propType = {
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    paddingTop: 110,
+    paddingTop: 100,
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: colors.transparent,
   },
   textInput: {
-    borderColor: 'lightblue',
+    borderColor: colors.product,
     borderWidth: 1,
     padding: 5,
     paddingLeft: 9,
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   modalContent: {
-    backgroundColor: 'white',
+    backgroundColor: colors.textAndBorderButtons,
     width: '90%',
     height: 250,
     borderRadius: '20%',
@@ -98,7 +101,7 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: colors.submitProductButton,
     flexDirection: 'row',
     justifyContent: 'center',
   },
@@ -110,7 +113,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   modalHeaderText: {
-    color: 'grey',
+    color: colors.modalNewProductText,
     fontSize: 17,
     flexGrow: 1,
     textAlign: 'center',
@@ -126,13 +129,13 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   pressableBtnModal: {
-    backgroundColor: 'gray',
+    backgroundColor: colors.modalNewProductText,
     borderBottomLeftRadius: '20%',
     borderBottomRightRadius: '20%',
   },
   modalBtn: {
     fontSize: 17,
-    color: '#fff',
+    color: colors.textAndBorderButtons,
     textAlign: 'center',
     padding: 16,
   },
