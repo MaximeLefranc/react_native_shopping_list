@@ -1,9 +1,10 @@
-import { Modal, StyleSheet, View, Text, TextInput } from 'react-native';
+import { Modal, StyleSheet, View, Text, Keyboard } from 'react-native';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 // Components
 import ButtonComponent from './ButtonComponent';
+import Input from './Input';
 
 // constants
 import colors from '../../constants/colors';
@@ -12,7 +13,8 @@ const ModalAddProduct = ({ showModal, submitHandler, setShowModal }) => {
   const [product, setProduct] = useState('');
 
   const inputHandler = (value) => {
-    setProduct(value);
+    const regex = /[^a-z0-9]/gi;
+    setProduct(value.replace(regex, ''));
   };
 
   const clickHandler = () => {
@@ -42,14 +44,14 @@ const ModalAddProduct = ({ showModal, submitHandler, setShowModal }) => {
             </ButtonComponent>
           </View>
           <View style={styles.modalBody}>
-            <TextInput
+            <Input
               style={styles.textInput}
-              placeholder="Nouveau produit"
-              onChangeText={inputHandler}
-              value={product}
+              textPlaceholder="Nouveau produit"
+              onChangeHandler={inputHandler}
+              currentValue={product}
+              autoFocus={true}
               clearButtonMode="while-editing"
               onSubmitEditing={onSubmitEditing}
-              autoFocus={true}
             />
           </View>
           <View style={styles.modalFooter}>
@@ -81,10 +83,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.transparent,
   },
   textInput: {
-    borderColor: colors.product,
-    borderWidth: 1,
     padding: 5,
-    paddingLeft: 9,
+    textAlign: 'center',
     fontSize: 18,
     borderRadius: 10,
     width: '80%',
