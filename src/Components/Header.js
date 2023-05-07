@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     minHeight: 30,
     paddingTop: 45,
-    paddingBottom: 15,
+    paddingBottom: 5,
   },
   logo: {
     color: colors.textAndBorderButtons,
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 25,
+    fontFamily: 'pacifico-regular',
   },
 });
 

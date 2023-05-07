@@ -9,6 +9,7 @@ const Products = ({ name, deleteProduct, id }) => {
     return {
       ...styles.itemsBtn,
       backgroundColor: pressed ? colors.confirmRemoveProduct : colors.product,
+      color: colors.textAndBorderButtons,
     };
   };
   return (
