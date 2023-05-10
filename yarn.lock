@@ -1069,6 +1069,11 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@expo-google-fonts/bangers@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/bangers/-/bangers-0.2.3.tgz#92e1a40f141d127916b0a9df582f7bed1ba7f0f4"
+  integrity sha512-LHThaq5C1OjTpZwykVIIRbMclCDSHlfWxDxMZz1XvIDSgcMUwMF/aKGsjOeWriik2ijkNW9yIg4Ss8wul8zDgQ==
+
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.0.tgz#be0c1de943c7987a9fbd309ea0b1acd605890c7b"

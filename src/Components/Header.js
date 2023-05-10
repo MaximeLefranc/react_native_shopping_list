@@ -1,4 +1,7 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+// Components
+import TitleText from './TitleText';
 
 // constants
 import colors from '../../constants/colors';
@@ -6,7 +9,7 @@ import colors from '../../constants/colors';
 const Header = () => {
   return (
     <View style={styles.headerWrapper}>
-      <Text style={styles.logo}>My Shopping List</Text>
+      <TitleText style={styles.logo}>My Shopping List</TitleText>
     </View>
   );
 };
@@ -16,12 +19,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: 30,
-    paddingTop: 45,
-    paddingBottom: 5,
+    paddingTop: 35,
   },
   logo: {
     color: colors.textAndBorderButtons,
-    fontSize: 25,
     fontFamily: 'pacifico-regular',
   },
 });

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   StyleSheet,
   FlatList,
@@ -14,7 +14,10 @@ import AddProduct from './src/Components/AddProduct.js';
 import DismissKeyboard from './src/Components/DismissKeyboard.js';
 
 // font
-import * as Font from 'expo-font';
+import {
+  useFonts,
+  Bangers_400Regular as BangersRegular,
+} from '@expo-google-fonts/bangers';
 import interBold from './assets/fonts/Inter-Bold.ttf';
 import interRegular from './assets/fonts/Inter-Regular.ttf';
 import pacifico from './assets/fonts/Pacifico-Regular.ttf';
@@ -28,40 +31,24 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [appIsReady, setAppIsReady] = useState(false);
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Pre-load fonts, make any API calls you need to do here
-        await Font.loadAsync({
-          'inter-bold': interBold,
-          'inter-regular': interRegular,
-          'pacifico-regular': pacifico,
-        });
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        // Tell the application to render
-        setAppIsReady(true);
-      }
-    }
-
-    prepare();
-  }, []);
+  const [fontsLoaded, error] = useFonts({
+    'inter-bold': interBold,
+    'inter-regular': interRegular,
+    'pacifico-regular': pacifico,
+    BangersRegular,
+  });
 
   const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
+    if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
-  }, [appIsReady]);
+  }, [fontsLoaded]);
 
-  if (!appIsReady) {
+  if (!fontsLoaded) {
+    if (error) {
+      console.error(error);
+      return null;
+    }
     return null;
   }
 
@@ -69,9 +56,9 @@ export default function App() {
     setShowModal(false);
     if (product.length > 1) {
       const idString = Date.now().toString();
-      setMyProducts((currentMyProduct) => [
+      setMyProducts((currentMyProducts) => [
         { key: idString, name: product },
-        ...currentMyProduct,
+        ...currentMyProducts,
       ]);
     } else {
       alert('Le nombre minimum de caractères autorisées est de 2 !');
@@ -120,7 +107,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   container: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    paddingTop: 15,
     height: '100%',
   },
 });
