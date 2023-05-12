@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
+// Icons
+import { FontAwesome } from '@expo/vector-icons';
+
 // constants
 import colors from '../../constants/colors';
 
@@ -18,6 +21,11 @@ const Products = ({ name, deleteProduct, id }) => {
       style={styleBtnClickHandler}
     >
       <Text style={styles.element}>{name}</Text>
+      <FontAwesome
+        name="remove"
+        size={29}
+        color={colors.textAndBorderButtons}
+      />
     </Pressable>
   );
 };
@@ -32,14 +40,17 @@ const styles = StyleSheet.create({
   itemsBtn: {
     marginTop: 5,
     borderRadius: 10,
+    padding: 15,
     overflow: 'hidden',
     marginBottom: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   element: {
     textAlign: 'center',
-    padding: 20,
     fontSize: 17,
-    marginVertical: 6,
+    flexGrow: 1,
   },
 });
 

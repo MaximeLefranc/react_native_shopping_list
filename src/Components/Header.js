@@ -4,12 +4,12 @@ import { StyleSheet, View } from 'react-native';
 import TitleText from './TitleText';
 
 // constants
-import colors from '../../constants/colors';
+import AppStyles from '../../constants/AppStyles';
 
 const Header = () => {
   return (
     <View style={styles.headerWrapper}>
-      <TitleText style={styles.logo}>My Shopping List</TitleText>
+      <TitleText style={AppStyles.headerOne}>My Shopping List</TitleText>
     </View>
   );
 };
@@ -20,10 +20,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     minHeight: 30,
     paddingTop: 35,
-  },
-  logo: {
-    color: colors.textAndBorderButtons,
-    fontFamily: 'pacifico-regular',
   },
 });
 

@@ -8,6 +8,7 @@ import Input from './Input';
 
 // constants
 import colors from '../../constants/colors';
+import BodyText from './Bodytext';
 
 const ModalAddProduct = ({ showModal, submitHandler, setShowModal }) => {
   const [product, setProduct] = useState('');
@@ -83,9 +84,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.transparent,
   },
   textInput: {
-    padding: 5,
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 20,
+    height: 60,
     borderRadius: 10,
     width: '80%',
   },

@@ -1,8 +1,8 @@
 const colors = {
   textAndBorderButtons: '#FFF',
-  bgButtonNewProduct: '#C8BDBD',
+  bgButtonNewProduct: 'lightblue',
   transparent: 'rgba(0,0,0,0.5)',
-  product: 'lightblue',
+  product: '#C8BDBD',
   submitProductButton: 'lightgray',
   modalNewProductText: 'grey',
   confirmRemoveProduct: 'tomato',
